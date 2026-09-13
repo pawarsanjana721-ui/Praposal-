@@ -1,0 +1,51 @@
+<button id="yes" onclick="sayYes()">YES ❤️</button>
+<button id="no" onclick="sayNo()">NO 💔</button>
+
+<div id="message"></div>
+
+<script>
+  function sayYes() {
+    const message = document.getElementById("message");
+
+    message.style.display = "block";
+    message.innerHTML = `
+      YAAAAAY!!! 🥹❤️🎉
+      <br>
+      I knew you would say YES! 💍
+      <br><br>
+      I love you so much! ❤️
+    `;
+
+    for (let i = 0; i < 80; i++) {
+      createHeart();
+    }
+  }
+
+  function sayNo() {
+    const message = document.getElementById("message");
+
+    message.style.display = "block";
+    message.innerHTML = `
+      Aww... 🥺💔
+      <br><br>
+      That's okay. I still love you ❤️
+    `;
+  }
+
+  function createHeart() {
+    const heart = document.createElement("div");
+
+    heart.innerHTML = "❤️";
+    heart.className = "floating-heart";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration =
+      (Math.random() * 3 + 3) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 6000);
+  }
+</script>
