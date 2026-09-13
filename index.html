@@ -1,51 +1,209 @@
-<button id="yes" onclick="sayYes()">YES ❤️</button>
-<button id="no" onclick="sayNo()">NO 💔</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💍 Husband Vacancy</title>
 
-<div id="message"></div>
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ff9ec4,#ffd6e8);
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+overflow:hidden;
+}
+
+.card{
+width:90%;
+max-width:700px;
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,.2);
+text-align:center;
+position:relative;
+z-index:10;
+}
+
+h1{
+color:#ff4081;
+margin-bottom:15px;
+}
+
+h2{
+margin-bottom:20px;
+color:#444;
+}
+
+ul{
+text-align:left;
+margin:20px auto;
+max-width:500px;
+line-height:1.8;
+}
+
+button{
+padding:14px 28px;
+font-size:18px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+margin:15px;
+transition:.3s;
+}
+
+#yes{
+background:#ff4081;
+color:white;
+}
+
+#yes:hover{
+transform:scale(1.08);
+}
+
+#no{
+background:#555;
+color:white;
+position:absolute;
+}
+
+#message{
+display:none;
+margin-top:25px;
+font-size:28px;
+color:#e91e63;
+font-weight:bold;
+}
+
+.heart{
+position:absolute;
+color:#ff4d88;
+font-size:24px;
+animation:float 8s linear infinite;
+opacity:.8;
+}
+
+@keyframes float{
+0%{
+transform:translateY(100vh);
+opacity:0;
+}
+20%{
+opacity:1;
+}
+100%{
+transform:translateY(-100px);
+opacity:0;
+}
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>💼 WE ARE HIRING 💼</h1>
+
+<h2>Position: Soulmate ❤️</h2>
+
+<p><b>Hiring Manager:</b> The Girl Who Already Likes You 😉</p>
+
+<br>
+
+<ul>
+<li>❤️ Must make me smile every day.</li>
+<li>🍕 Should enjoy food dates.</li>
+<li>😂 Must laugh at my silly jokes.</li>
+<li>🤝 Be my best friend forever.</li>
+<li>💖 Love me unconditionally.</li>
+<li>💍 Lifetime commitment required.</li>
+</ul>
+
+<h3>Employee Benefits</h3>
+
+<p>
+Unlimited Love ❤️<br>
+Free Hugs 🤗<br>
+Travel Partner ✈️<br>
+Lifetime Happiness 💕
+</p>
+
+<br>
+
+<h2>Will you accept the position of My Soulmate? 💍</h2>
+
+<div style="position:relative;height:100px;">
+<button id="yes" onclick="acceptProposal()">YES ❤️</button>
+<button id="no">NO 🙈</button>
+</div>
+
+<div id="message">
+🎉 Congratulations! 🎉<br><br>
+You are officially hired as my soulmate! ❤️💍
+</div>
+
+</div>
 
 <script>
-  function sayYes() {
-    const message = document.getElementById("message");
 
-    message.style.display = "block";
-    message.innerHTML = `
-      YAAAAAY!!! 🥹❤️🎉
-      <br>
-      I knew you would say YES! 💍
-      <br><br>
-      I love you so much! ❤️
-    `;
+const no=document.getElementById("no");
 
-    for (let i = 0; i < 80; i++) {
-      createHeart();
-    }
-  }
+no.addEventListener("mouseover",moveButton);
+no.addEventListener("click",moveButton);
 
-  function sayNo() {
-    const message = document.getElementById("message");
+function moveButton(){
 
-    message.style.display = "block";
-    message.innerHTML = `
-      Aww... 🥺💔
-      <br><br>
-      That's okay. I still love you ❤️
-    `;
-  }
+let x=Math.random()*(window.innerWidth-120);
 
-  function createHeart() {
-    const heart = document.createElement("div");
+let y=Math.random()*(window.innerHeight-80);
 
-    heart.innerHTML = "❤️";
-    heart.className = "floating-heart";
+no.style.left=x+"px";
 
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration =
-      (Math.random() * 3 + 3) + "s";
+no.style.top=y+"px";
 
-    document.body.appendChild(heart);
+}
 
-    setTimeout(() => {
-      heart.remove();
-    }, 6000);
-  }
+function acceptProposal(){
+
+document.getElementById("message").style.display="block";
+
+createHearts();
+
+}
+
+function createHearts(){
+
+setInterval(()=>{
+
+let heart=document.createElement("div");
+
+heart.className="heart";
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(20+Math.random()*30)+"px";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>heart.remove(),8000);
+
+},250);
+
+}
+
 </script>
+
+</body>
+</html>
